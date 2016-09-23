@@ -40,7 +40,10 @@ class FusionExtensionSidebar	{
 	 */
 	 
 	 public function front_enqueue_scripts_styles() {
-		wp_enqueue_style( 'fsn_sidebar', plugin_dir_url( __FILE__ ) . 'includes/css/fusion-extension-sidebar.css', false, '1.0.0' );
+		global $post;
+		if (has_shortcode($post->post_content, 'fsn_sidebar')) {
+			wp_enqueue_style( 'fsn_sidebar', plugin_dir_url( __FILE__ ) . 'includes/css/fusion-extension-sidebar.css', false, '1.0.0' );
+		}
 	}
 	
 }
