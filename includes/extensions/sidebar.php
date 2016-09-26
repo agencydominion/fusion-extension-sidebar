@@ -11,30 +11,13 @@
  * @since 1.0.0
  */
 
+/**
+ * Map Shortcode
+ */
+
 add_action('init', 'fsn_init_sidebar', 12);
 function fsn_init_sidebar() {
- 	
- 	//OUTPUT SHORTCODE
- 	function fsn_sidebar_shortcode( $atts ) {
-		extract( shortcode_atts( array(
-			'sidebar_id' => ''
-		), $atts ) );
-		
-		if (!empty($sidebar_id)) {
-			$output = '<div class="fsn-sidebar '. fsn_style_params_class($atts) .'">';
-				ob_start();
-				if ( is_active_sidebar($sidebar_id) ) : ?>
-					<?php dynamic_sidebar($sidebar_id); ?>
-				<?php endif;
-				$output .= ob_get_clean();
-			$output .= '</div>';
-		}
-		
-		return $output;
-	}
-	add_shortcode('fsn_sidebar', 'fsn_sidebar_shortcode');
- 
-	//MAP SHORTCODE
+
 	if (function_exists('fsn_map')) {	
 		global $wp_registered_sidebars;
 		
@@ -62,5 +45,28 @@ function fsn_init_sidebar() {
 		));
 	}
 }
+
+/**
+ * Output Shortcode
+ */
+
+function fsn_sidebar_shortcode( $atts ) {
+	extract( shortcode_atts( array(
+		'sidebar_id' => ''
+	), $atts ) );
+	
+	if (!empty($sidebar_id)) {
+		$output = '<div class="fsn-sidebar '. fsn_style_params_class($atts) .'">';
+			ob_start();
+			if ( is_active_sidebar($sidebar_id) ) : ?>
+				<?php dynamic_sidebar($sidebar_id); ?>
+			<?php endif;
+			$output .= ob_get_clean();
+		$output .= '</div>';
+	}
+	
+	return $output;
+}
+add_shortcode('fsn_sidebar', 'fsn_sidebar_shortcode');
  
 ?>
