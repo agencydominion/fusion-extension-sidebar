@@ -6,7 +6,7 @@
  * Plugin Name: Fusion : Extension - Sidebar
  * Plugin URI: http://fusion.1867dev.com
  * Description: Sidebar Extension Package for Fusion.
- * Version: 1.0.0
+ * Version: 1.1.0
  * Author: Agency Dominion
  * Author URI: http://agencydominion.com
  * License: GPL2
